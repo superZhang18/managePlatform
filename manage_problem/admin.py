@@ -3,9 +3,9 @@ from .models import *
 from .views import *
 
 # =============后台全局设置=========================
-admin.site.site_header = "xxxx综合管理平台"
-admin.site.site_title = "xxxx综合管理平台"
-admin.site.index_title = "后台管理"
+# admin.site.site_header = "xxxx综合管理平台"
+# admin.site.site_title = "xxxx综合管理平台"
+# admin.site.index_title = "后台管理"
 
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):

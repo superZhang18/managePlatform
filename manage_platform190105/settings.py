@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'manage_problem.apps.ManageProblemConfig',
-]
+    'manage_person.apps.ManagePersonConfig',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,10 +120,22 @@ TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = False
 
+DATETIME_FORMAT = "Y-m-d H:i:s" #suit在设置时间时的bug
+DATE_FORMAT = "Y-m-d"
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': "综合管理平台",
+    'LIST_PER_PAGE': 20,
+    # 'MENU': (
+    #{    'label': u'用户管理',
+    #     'app': '',
+    #     'models': ('',)},
+    # ),
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

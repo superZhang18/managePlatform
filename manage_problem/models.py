@@ -14,18 +14,10 @@ class Department(models.Model):
         verbose_name_plural = '单位列表'
         ordering = ['seq']
     def __str__(self):
-        # temp = ''
-        # temps = Department.objects.filter(name__exact=self.parent_id)
-        # for x in temps:
-        #     temp = x
-        # return '{}{}'.format(temp, self.name)
-        # temps = Department.objects.filter(id__exact=self.parent_id)
-        # print(temps)
         if self.parent_id is None:
             return '{}'.format(self.name)
         else:
             return '{}{}'.format(self.parent_id, self.name)
-
 
 #问题情况汇总表
 class Problem(models.Model):
