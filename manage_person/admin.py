@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 @admin.register(PersonTypeCategory)
 class PersonTypeCategoryAdmin(admin.ModelAdmin):
@@ -26,8 +28,17 @@ class PersonStatusAdmin(admin.ModelAdmin):
 class Address(admin.ModelAdmin):
     pass
 
+class PersonResource(resources.ModelResource):
+    class Meta:
+        model = Person
+        fields = ('department', 'department_now', 'name')
+        export_order = ('department', 'name')
+
+
 @admin.register(Person)
-class PersonAdmin(admin.ModelAdmin):
+# class PersonAdmin(admin.ModelAdmin):
+class PersonAdmin(ImportExportModelAdmin):
+    resource_class = PersonResource
     # 后台列表显示列
     # list_display = ['department', 'position', 'name', 'person_type_option']
     list_display = ['position', 'name']
@@ -38,3 +49,7 @@ class PersonAdmin(admin.ModelAdmin):
     # 后台列表通过时间查询
     list_filter = ['name']
     # radio_fields = {'department'}
+
+# class PersonResource(resources.ModelResource):
+#     class Meta:
+#         model = Person
